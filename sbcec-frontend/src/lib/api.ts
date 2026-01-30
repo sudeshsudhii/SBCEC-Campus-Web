@@ -43,7 +43,7 @@ api.interceptors.response.use(
                 }
 
                 // Call refresh endpoint
-                const { data } = await axios.post('http://localhost:5000/api/auth/refresh-token', {
+                const { data } = await api.post('/auth/refresh-token', {
                     refreshToken
                 });
 
