@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+
+    /* College Brand Colors */
+    --college-blue: 216 100% 25%; /* #003380 approx - Deep Blue */
+    --college-red: 345 100% 30%; /* #990026 approx - Maroon */
+    --college-yellow: 45 100% 50%; /* #FFC700 approx - Gold/Yellow */
+    --college-green: 150 100% 25%; /* #008040 approx - Dark Green/Teal */
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
