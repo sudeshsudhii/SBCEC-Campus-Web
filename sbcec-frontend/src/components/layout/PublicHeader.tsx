@@ -41,10 +41,9 @@ export function PublicHeader() {
 
             {/* Main Header - Logo & Title */}
             <div className="container mx-auto py-2 px-4 flex flex-col md:flex-row items-center justify-between gap-4 bg-white">
-                <div className="flex items-center gap-6 w-full md:w-auto">
+                <div className="flex flex-col md:flex-row items-center gap-3 md:gap-6 w-full md:w-auto">
                     {/* Logo */}
-                    {/* Logo */}
-                    <div className="h-20 md:h-28 relative flex-shrink-0 flex items-center">
+                    <div className="h-16 md:h-28 relative flex-shrink-0 flex items-center">
                         <Image
                             src="/assets/live/logo_high_res.png"
                             alt="SBCEC Logo"
@@ -55,13 +54,13 @@ export function PublicHeader() {
                         />
                     </div>
                     <div className="flex flex-col text-center md:text-left justify-center">
-                        <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-[#002147] font-serif uppercase tracking-wide leading-tight">
+                        <h1 className="text-lg md:text-3xl lg:text-4xl font-extrabold text-[#002147] font-serif uppercase tracking-wide leading-tight">
                             Sri Balaji Chockalingam <br className="hidden md:inline" /> Engineering College
                         </h1>
-                        <p className="text-xs md:text-sm font-bold text-red-700 mt-1 uppercase tracking-wider">
+                        <p className="text-[10px] md:text-sm font-bold text-red-700 mt-1 uppercase tracking-wider leading-tight">
                             Approved by AICTE | Affiliated to Anna University
                         </p>
-                        <p className="text-xs md:text-sm text-green-700 font-bold">
+                        <p className="text-[10px] md:text-sm text-green-700 font-bold leading-tight">
                             Irumbedu, Arni - 632 317, Thiruvannamalai Dist.
                         </p>
                     </div>
