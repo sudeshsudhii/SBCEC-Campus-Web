@@ -6,7 +6,7 @@ import { asyncHandler } from '../utils/asyncHandler';
 import { AuthRequest } from '../middleware/auth.middleware';
 
 export const getAllEvents = asyncHandler(
-    async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    async (req: Request, res: Response, _next: NextFunction): Promise<void> => {
         const { page = 1, limit = 10, category } = req.query;
 
         const query: any = { status: 'published', isActive: true };
@@ -40,7 +40,7 @@ export const getAllEvents = asyncHandler(
 );
 
 export const getEventById = asyncHandler(
-    async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    async (req: Request, res: Response, _next: NextFunction): Promise<void> => {
         const { id } = req.params;
 
         const event = await Event.findById(id).populate('createdBy', 'firstName lastName');
@@ -60,7 +60,7 @@ export const getEventById = asyncHandler(
 );
 
 export const createEvent = asyncHandler(
-    async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
+    async (req: AuthRequest, res: Response, _next: NextFunction): Promise<void> => {
         const eventData = {
             ...req.body,
             createdBy: req.user?._id,
@@ -75,7 +75,7 @@ export const createEvent = asyncHandler(
 );
 
 export const updateEvent = asyncHandler(
-    async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
+    async (req: AuthRequest, res: Response, _next: NextFunction): Promise<void> => {
         const { id } = req.params;
 
         const event = await Event.findByIdAndUpdate(
@@ -93,7 +93,7 @@ export const updateEvent = asyncHandler(
 );
 
 export const publishEvent = asyncHandler(
-    async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
+    async (req: AuthRequest, res: Response, _next: NextFunction): Promise<void> => {
         const { id } = req.params;
         const { status } = req.body; // 'published' or 'archived' or 'draft'
 
@@ -116,7 +116,7 @@ export const publishEvent = asyncHandler(
 );
 
 export const deleteEvent = asyncHandler(
-    async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
+    async (req: AuthRequest, res: Response, _next: NextFunction): Promise<void> => {
         const { id } = req.params;
 
         const event = await Event.findByIdAndUpdate(

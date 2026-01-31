@@ -1,0 +1,27 @@
+﻿src/controllers/auth.controller.ts(15,24): error TS2451: Cannot redeclare block-scoped variable 'password'.
+src/controllers/auth.controller.ts(33,17): error TS2451: Cannot redeclare block-scoped variable 'password'.
+src/models/Course.model.ts(94,5): error TS2349: This expression is not callable.
+  Type 'Record<string, any>' has no call signatures.
+src/models/Course.model.ts(94,5): error TS2722: Cannot invoke an object which is possibly 'undefined'.
+src/models/Department.model.ts(82,5): error TS2349: This expression is not callable.
+  Type 'Record<string, any>' has no call signatures.
+src/models/Department.model.ts(82,5): error TS2722: Cannot invoke an object which is possibly 'undefined'.
+src/models/Event.model.ts(85,5): error TS2349: This expression is not callable.
+  Type 'Record<string, any>' has no call signatures.
+src/models/Event.model.ts(85,5): error TS2722: Cannot invoke an object which is possibly 'undefined'.
+src/models/Faculty.model.ts(106,5): error TS2349: This expression is not callable.
+  Type 'Record<string, any>' has no call signatures.
+src/models/Faculty.model.ts(106,5): error TS2722: Cannot invoke an object which is possibly 'undefined'.
+src/models/Gallery.model.ts(70,5): error TS2349: This expression is not callable.
+  Type 'Record<string, any>' has no call signatures.
+src/models/Gallery.model.ts(70,5): error TS2722: Cannot invoke an object which is possibly 'undefined'.
+src/models/Notice.model.ts(75,5): error TS2349: This expression is not callable.
+  Type 'Record<string, any>' has no call signatures.
+src/models/Notice.model.ts(75,5): error TS2722: Cannot invoke an object which is possibly 'undefined'.
+src/models/User.model.ts(73,46): error TS2349: This expression is not callable.
+  Type 'SaveOptions' has no call signatures.
+src/models/User.model.ts(77,5): error TS2349: This expression is not callable.
+  Type 'SaveOptions' has no call signatures.
+src/models/User.model.ts(90,5): error TS2349: This expression is not callable.
+  Type 'Record<string, any>' has no call signatures.
+src/models/User.model.ts(90,5): error TS2722: Cannot invoke an object which is possibly 'undefined'.

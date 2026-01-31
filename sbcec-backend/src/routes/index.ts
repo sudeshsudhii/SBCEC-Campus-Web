@@ -19,7 +19,7 @@ router.use('/notices', noticeRoutes);
 router.use('/gallery', galleryRoutes);
 
 // Health check
-router.get('/health', (req, res) => {
+router.get('/health', (_req, res) => {
     res.json({
         success: true,
         message: 'API is running',

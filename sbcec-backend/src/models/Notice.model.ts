@@ -70,10 +70,8 @@ const noticeSchema = new Schema<INotice>(
 );
 
 // Exclude soft-deleted documents by default
-noticeSchema.pre(/^find/, function (next) {
-    // @ts-ignore
+noticeSchema.pre(/^find/, function (this: any) {
     this.where({ deletedAt: null });
-    next();
 });
 
 export const Notice = mongoose.model<INotice>('Notice', noticeSchema);

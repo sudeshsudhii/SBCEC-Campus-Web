@@ -6,7 +6,7 @@ import { asyncHandler } from '../utils/asyncHandler';
 import { AuthRequest } from '../middleware/auth.middleware';
 
 export const getAllDepartments = asyncHandler(
-    async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    async (_req: Request, res: Response, _next: NextFunction): Promise<void> => {
         const departments = await Department.find({ isActive: true })
             .populate('headOfDepartment', 'firstName lastName email')
             .sort({ name: 1 });
@@ -18,7 +18,7 @@ export const getAllDepartments = asyncHandler(
 );
 
 export const getDepartmentById = asyncHandler(
-    async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    async (req: Request, res: Response, _next: NextFunction): Promise<void> => {
         const { id } = req.params;
 
         const department = await Department.findById(id)
@@ -34,7 +34,7 @@ export const getDepartmentById = asyncHandler(
 );
 
 export const createDepartment = asyncHandler(
-    async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
+    async (req: AuthRequest, res: Response, _next: NextFunction): Promise<void> => {
         const departmentData = {
             ...req.body,
             createdBy: req.user?._id,
@@ -49,7 +49,7 @@ export const createDepartment = asyncHandler(
 );
 
 export const updateDepartment = asyncHandler(
-    async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
+    async (req: AuthRequest, res: Response, _next: NextFunction): Promise<void> => {
         const { id } = req.params;
 
         const department = await Department.findByIdAndUpdate(
@@ -67,7 +67,7 @@ export const updateDepartment = asyncHandler(
 );
 
 export const deleteDepartment = asyncHandler(
-    async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
+    async (req: AuthRequest, res: Response, _next: NextFunction): Promise<void> => {
         const { id } = req.params;
 
         // Soft delete

@@ -11,7 +11,7 @@ import { asyncHandler } from '../utils/asyncHandler';
 import { AuthRequest } from '../middleware/auth.middleware';
 
 export const register = asyncHandler(
-    async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    async (req: Request, res: Response, _next: NextFunction): Promise<void> => {
         const { email, password, firstName, lastName, role } = req.body;
 
         // Check if user already exists
@@ -30,8 +30,7 @@ export const register = asyncHandler(
         });
 
         // Remove password from response
-        const userResponse = user.toObject();
-        delete userResponse.password;
+        const { password: _pwd, ...userResponse } = user.toObject();
 
         res.status(201).json(
             new ApiResponse(201, userResponse, 'User registered successfully')
@@ -40,7 +39,7 @@ export const register = asyncHandler(
 );
 
 export const login = asyncHandler(
-    async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    async (req: Request, res: Response, _next: NextFunction): Promise<void> => {
         const { email, password } = req.body;
 
         // Validate input
@@ -76,8 +75,7 @@ export const login = asyncHandler(
         await user.save();
 
         // Remove password from response
-        const userResponse = user.toObject();
-        delete userResponse.password;
+        const { password: _pwd2, ...userResponse } = user.toObject();
 
         res.json(
             new ApiResponse(
@@ -94,7 +92,7 @@ export const login = asyncHandler(
 );
 
 export const refreshAccessToken = asyncHandler(
-    async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    async (req: Request, res: Response, _next: NextFunction): Promise<void> => {
         const { refreshToken } = req.body;
 
         if (!refreshToken) {
@@ -127,7 +125,7 @@ export const refreshAccessToken = asyncHandler(
 );
 
 export const logout = asyncHandler(
-    async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    async (req: Request, res: Response, _next: NextFunction): Promise<void> => {
         const { refreshToken } = req.body;
 
         if (refreshToken) {
@@ -139,7 +137,7 @@ export const logout = asyncHandler(
 );
 
 export const getMe = asyncHandler(
-    async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
+    async (req: AuthRequest, res: Response, _next: NextFunction): Promise<void> => {
         if (!req.user) {
             throw new ApiError(401, 'Not authenticated');
         }

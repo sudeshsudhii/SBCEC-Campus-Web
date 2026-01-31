@@ -80,10 +80,8 @@ const eventSchema = new Schema<IEvent>(
 );
 
 // Exclude soft-deleted documents by default
-eventSchema.pre(/^find/, function (next) {
-    // @ts-ignore
+eventSchema.pre(/^find/, function (this: any) {
     this.where({ deletedAt: null });
-    next();
 });
 
 export const Event = mongoose.model<IEvent>('Event', eventSchema);

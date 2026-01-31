@@ -89,10 +89,8 @@ const courseSchema = new Schema<ICourse>(
 );
 
 // Exclude soft-deleted documents by default
-courseSchema.pre(/^find/, function (next) {
-    // @ts-ignore
+courseSchema.pre(/^find/, function (this: any) {
     this.where({ deletedAt: null });
-    next();
 });
 
 export const Course = mongoose.model<ICourse>('Course', courseSchema);

@@ -101,10 +101,8 @@ const facultySchema = new Schema<IFaculty>(
 );
 
 // Exclude soft-deleted documents by default
-facultySchema.pre(/^find/, function (next) {
-    // @ts-ignore
+facultySchema.pre(/^find/, function (this: any) {
     this.where({ deletedAt: null });
-    next();
 });
 
 export const Faculty = mongoose.model<IFaculty>('Faculty', facultySchema);

@@ -11,7 +11,7 @@ export const generateAccessToken = (user: IUser): string => {
 
     return jwt.sign(payload, config.jwt.secret, {
         expiresIn: config.jwt.expiresIn,
-    });
+    } as jwt.SignOptions);
 };
 
 export const generateRefreshToken = (user: IUser): string => {
@@ -21,7 +21,7 @@ export const generateRefreshToken = (user: IUser): string => {
 
     return jwt.sign(payload, config.jwt.secret, {
         expiresIn: config.jwt.refreshTokenExpiresIn,
-    });
+    } as jwt.SignOptions);
 };
 
 export const verifyToken = (token: string): any => {

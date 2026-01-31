@@ -77,10 +77,8 @@ const departmentSchema = new Schema<IDepartment>(
 );
 
 // Exclude soft-deleted documents by default
-departmentSchema.pre(/^find/, function (next) {
-    // @ts-ignore
+departmentSchema.pre(/^find/, function (this: any) {
     this.where({ deletedAt: null });
-    next();
 });
 
 export const Department = mongoose.model<IDepartment>('Department', departmentSchema);

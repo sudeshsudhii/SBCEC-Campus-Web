@@ -6,7 +6,7 @@ import { asyncHandler } from '../utils/asyncHandler';
 import { AuthRequest } from '../middleware/auth.middleware';
 
 export const getAllFaculty = asyncHandler(
-    async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    async (_req: Request, res: Response, _next: NextFunction): Promise<void> => {
         const faculty = await Faculty.find({ isActive: true })
             .populate('user', 'firstName lastName email')
             .populate('department', 'name code')
@@ -19,7 +19,7 @@ export const getAllFaculty = asyncHandler(
 );
 
 export const getFacultyById = asyncHandler(
-    async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    async (req: Request, res: Response, _next: NextFunction): Promise<void> => {
         const { id } = req.params;
 
         const faculty = await Faculty.findById(id)
@@ -35,7 +35,7 @@ export const getFacultyById = asyncHandler(
 );
 
 export const getFacultyByDepartment = asyncHandler(
-    async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    async (req: Request, res: Response, _next: NextFunction): Promise<void> => {
         const { deptId } = req.params;
 
         const faculty = await Faculty.find({ department: deptId, isActive: true })
@@ -49,7 +49,7 @@ export const getFacultyByDepartment = asyncHandler(
 );
 
 export const createFaculty = asyncHandler(
-    async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
+    async (req: AuthRequest, res: Response, _next: NextFunction): Promise<void> => {
         const faculty = await Faculty.create(req.body);
 
         res.status(201).json(
@@ -59,7 +59,7 @@ export const createFaculty = asyncHandler(
 );
 
 export const updateFaculty = asyncHandler(
-    async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
+    async (req: AuthRequest, res: Response, _next: NextFunction): Promise<void> => {
         const { id } = req.params;
 
         const faculty = await Faculty.findByIdAndUpdate(
@@ -77,7 +77,7 @@ export const updateFaculty = asyncHandler(
 );
 
 export const deleteFaculty = asyncHandler(
-    async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
+    async (req: AuthRequest, res: Response, _next: NextFunction): Promise<void> => {
         const { id } = req.params;
 
         const faculty = await Faculty.findByIdAndUpdate(

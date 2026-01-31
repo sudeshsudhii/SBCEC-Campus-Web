@@ -65,10 +65,8 @@ const gallerySchema = new Schema<IGallery>(
 );
 
 // Exclude soft-deleted documents by default
-gallerySchema.pre(/^find/, function (next) {
-    // @ts-ignore
+gallerySchema.pre(/^find/, function (this: any) {
     this.where({ deletedAt: null });
-    next();
 });
 
 export const Gallery = mongoose.model<IGallery>('Gallery', gallerySchema);

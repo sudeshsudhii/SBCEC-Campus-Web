@@ -6,7 +6,7 @@ import { asyncHandler } from '../utils/asyncHandler';
 import { AuthRequest } from '../middleware/auth.middleware';
 
 export const getAllNotices = asyncHandler(
-    async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    async (req: Request, res: Response, _next: NextFunction): Promise<void> => {
         const { page = 1, limit = 10, category } = req.query;
 
         const query: any = { isActive: true };
@@ -41,7 +41,7 @@ export const getAllNotices = asyncHandler(
 );
 
 export const getNoticeById = asyncHandler(
-    async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    async (req: Request, res: Response, _next: NextFunction): Promise<void> => {
         const { id } = req.params;
 
         const notice = await Notice.findById(id).populate('createdBy', 'firstName lastName');
@@ -55,7 +55,7 @@ export const getNoticeById = asyncHandler(
 );
 
 export const createNotice = asyncHandler(
-    async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
+    async (req: AuthRequest, res: Response, _next: NextFunction): Promise<void> => {
         const noticeData = {
             ...req.body,
             createdBy: req.user?._id,
@@ -70,7 +70,7 @@ export const createNotice = asyncHandler(
 );
 
 export const updateNotice = asyncHandler(
-    async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
+    async (req: AuthRequest, res: Response, _next: NextFunction): Promise<void> => {
         const { id } = req.params;
 
         const notice = await Notice.findByIdAndUpdate(
@@ -88,7 +88,7 @@ export const updateNotice = asyncHandler(
 );
 
 export const pinNotice = asyncHandler(
-    async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
+    async (req: AuthRequest, res: Response, _next: NextFunction): Promise<void> => {
         const { id } = req.params;
         const { isPinned } = req.body; // boolean
 
@@ -107,7 +107,7 @@ export const pinNotice = asyncHandler(
 );
 
 export const deleteNotice = asyncHandler(
-    async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
+    async (req: AuthRequest, res: Response, _next: NextFunction): Promise<void> => {
         const { id } = req.params;
 
         const notice = await Notice.findByIdAndUpdate(

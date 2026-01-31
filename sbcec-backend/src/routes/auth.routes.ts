@@ -7,7 +7,6 @@ import {
     getMe,
 } from '../controllers/auth.controller';
 import { authenticate } from '../middleware/auth.middleware';
-import { authorize } from '../middleware/rbac.middleware';
 
 const router = Router();
 

@@ -6,7 +6,7 @@ import { asyncHandler } from '../utils/asyncHandler';
 import { AuthRequest } from '../middleware/auth.middleware';
 
 export const getAllGalleries = asyncHandler(
-    async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    async (req: Request, res: Response, _next: NextFunction): Promise<void> => {
         const { page = 1, limit = 10, category } = req.query;
 
         const query: any = { isActive: true };
@@ -40,7 +40,7 @@ export const getAllGalleries = asyncHandler(
 );
 
 export const getGalleryById = asyncHandler(
-    async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    async (req: Request, res: Response, _next: NextFunction): Promise<void> => {
         const { id } = req.params;
 
         const gallery = await Gallery.findById(id).populate('eventId', 'title eventDate');
@@ -54,7 +54,7 @@ export const getGalleryById = asyncHandler(
 );
 
 export const createGallery = asyncHandler(
-    async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
+    async (req: AuthRequest, res: Response, _next: NextFunction): Promise<void> => {
         const galleryData = {
             ...req.body,
             createdBy: req.user?._id,
@@ -69,7 +69,7 @@ export const createGallery = asyncHandler(
 );
 
 export const updateGallery = asyncHandler(
-    async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
+    async (req: AuthRequest, res: Response, _next: NextFunction): Promise<void> => {
         const { id } = req.params;
 
         const gallery = await Gallery.findByIdAndUpdate(
@@ -87,7 +87,7 @@ export const updateGallery = asyncHandler(
 );
 
 export const deleteGallery = asyncHandler(
-    async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
+    async (req: AuthRequest, res: Response, _next: NextFunction): Promise<void> => {
         const { id } = req.params;
 
         const gallery = await Gallery.findByIdAndUpdate(

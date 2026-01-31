@@ -6,7 +6,7 @@ import { asyncHandler } from '../utils/asyncHandler';
 import { AuthRequest } from '../middleware/auth.middleware';
 
 export const getAllCourses = asyncHandler(
-    async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    async (_req: Request, res: Response, _next: NextFunction): Promise<void> => {
         const courses = await Course.find({ isActive: true })
             .populate('department', 'name code')
             .sort({ level: 1, name: 1 });
@@ -18,7 +18,7 @@ export const getAllCourses = asyncHandler(
 );
 
 export const getCourseById = asyncHandler(
-    async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    async (req: Request, res: Response, _next: NextFunction): Promise<void> => {
         const { id } = req.params;
 
         const course = await Course.findById(id)
@@ -34,7 +34,7 @@ export const getCourseById = asyncHandler(
 );
 
 export const getCoursesByDepartment = asyncHandler(
-    async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    async (req: Request, res: Response, _next: NextFunction): Promise<void> => {
         const { deptId } = req.params;
 
         const courses = await Course.find({ department: deptId, isActive: true })
@@ -47,7 +47,7 @@ export const getCoursesByDepartment = asyncHandler(
 );
 
 export const createCourse = asyncHandler(
-    async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
+    async (req: AuthRequest, res: Response, _next: NextFunction): Promise<void> => {
         const courseData = {
             ...req.body,
             createdBy: req.user?._id,
@@ -62,7 +62,7 @@ export const createCourse = asyncHandler(
 );
 
 export const updateCourse = asyncHandler(
-    async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
+    async (req: AuthRequest, res: Response, _next: NextFunction): Promise<void> => {
         const { id } = req.params;
 
         const course = await Course.findByIdAndUpdate(
@@ -80,7 +80,7 @@ export const updateCourse = asyncHandler(
 );
 
 export const deleteCourse = asyncHandler(
-    async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
+    async (req: AuthRequest, res: Response, _next: NextFunction): Promise<void> => {
         const { id } = req.params;
 
         const course = await Course.findByIdAndUpdate(
