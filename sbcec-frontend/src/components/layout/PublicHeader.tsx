@@ -1,23 +1,25 @@
 "use client";
 
 import Link from "next/link";
-import { Search, Facebook, Twitter, Instagram, Linkedin, Phone, Mail } from "lucide-react";
+import { Search, Facebook, Twitter, Instagram, Linkedin, Phone, Mail, ChevronDown } from "lucide-react";
 import { useState } from "react";
 import Image from "next/image";
 
 export function PublicHeader() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isMessageDropdownOpen, setIsMessageDropdownOpen] = useState(false);
+    const [isDepartmentDropdownOpen, setIsDepartmentDropdownOpen] = useState(false);
 
     return (
-        <header className="w-full flex flex-col font-sans">
+        <header className="w-full border-b bg-white z-50">
             {/* Top Bar - Socials & Search */}
-            <div className="bg-slate-100 border-b text-xs py-1 px-4 hidden md:flex justify-between items-center text-slate-600">
+            <div className="bg-[#b30202] border-b text-xs py-1 px-4 hidden md:flex justify-between items-center text-white">
                 <div className="flex gap-4">
-                    <Link href="/nirf" className="hover:text-primary">NIRF</Link>
+                    <Link href="/nirf" className="hover:text-yellow-300">NIRF</Link>
                     <span>|</span>
-                    <Link href="/careers" className="hover:text-primary">Careers</Link>
+                    <Link href="/careers" className="hover:text-yellow-300">Careers</Link>
                     <span>|</span>
-                    <Link href="/contact" className="hover:text-primary">Contact</Link>
+                    <Link href="/contact" className="hover:text-yellow-300">Contact</Link>
                 </div>
                 <div className="flex items-center gap-4">
                     <div className="flex gap-2 items-center">
@@ -28,6 +30,11 @@ export function PublicHeader() {
                         <Twitter className="h-3 w-3 cursor-pointer hover:text-blue-400" />
                         <Instagram className="h-3 w-3 cursor-pointer hover:text-pink-600" />
                         <Linkedin className="h-3 w-3 cursor-pointer hover:text-blue-700" />
+                    </div>
+                    {/* Compact Search Bar */}
+                    <div className="flex items-center bg-white rounded-full px-3 py-1 border border-white w-40">
+                        <input type="text" placeholder="Search..." className="bg-transparent border-none text-xs focus:outline-none w-full text-gray-700 placeholder:text-gray-400" />
+                        <Search className="h-3 w-3 text-gray-500" />
                     </div>
                 </div>
             </div>
@@ -68,15 +75,20 @@ export function PublicHeader() {
                     />
                 </div>
 
-                {/* Search Bar - Hidden on small mobile */}
-                <div className="hidden md:flex items-center bg-slate-100 rounded-full px-4 py-1.5 border w-64">
-                    <input type="text" placeholder="Search..." className="bg-transparent border-none text-sm focus:outline-none w-full" />
-                    <Search className="h-4 w-4 text-slate-400" />
+                {/* Admission Button */}
+                <div className="hidden md:flex items-center">
+                    <Link href="/admission" className="group relative bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-gray-900 px-8 py-3 rounded-full font-bold text-base hover:shadow-2xl transition-all duration-300 hover:scale-105 whitespace-nowrap shadow-lg border-2 border-amber-600">
+                        <span className="relative z-10 flex items-center gap-2">
+                            <span className="text-xl">🎓</span>
+                            <span>Admission 2026</span>
+                        </span>
+                        <span className="absolute inset-0 rounded-full bg-gradient-to-r from-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                    </Link>
                 </div>
             </div>
 
-            {/* Navigation Bar - Green/Teal Strip */}
-            <nav className="bg-[#004d40] text-white shadow-md relative z-50">
+            {/* Navigation Bar - Maroon Strip */}
+            <nav className="bg-[#b30202] text-white shadow-md relative z-50">
                 <div className="container mx-auto relative">
                     {/* Mobile Menu Toggle */}
                     <div className="md:hidden flex justify-between items-center p-3">
@@ -90,13 +102,125 @@ export function PublicHeader() {
 
                     {/* Desktop Menu Links */}
                     <ul className={`${isMenuOpen ? 'flex' : 'hidden'} md:flex flex-col md:flex-row md:items-center md:justify-center text-xs md:text-[13px] font-medium uppercase tracking-wide divide-y md:divide-y-0 border-t md:border-t-0 border-white/10`}>
+                        <li className="relative group">
+                            <Link href="/" className="block py-3 px-3 md:px-4 hover:bg-yellow-500 hover:text-black transition-colors whitespace-nowrap">
+                                Home
+                            </Link>
+                        </li>
+                        <li className="relative group">
+                            <Link href="/about" className="block py-3 px-3 md:px-4 hover:bg-yellow-500 hover:text-black transition-colors whitespace-nowrap">
+                                About Us
+                            </Link>
+                        </li>
+
+                        {/* Message Dropdown */}
+                        <li
+                            className="relative group"
+                            onMouseEnter={() => setIsMessageDropdownOpen(true)}
+                            onMouseLeave={() => setIsMessageDropdownOpen(false)}
+                        >
+                            <button className="flex items-center gap-1 py-3 px-3 md:px-4 hover:bg-yellow-500 hover:text-black transition-colors whitespace-nowrap w-full md:w-auto text-left">
+                                Message
+                                <ChevronDown className="h-3 w-3" />
+                            </button>
+                            {/* Dropdown Menu */}
+                            <ul className={`${isMessageDropdownOpen ? 'block' : 'hidden'} md:absolute md:top-full md:left-0 md:bg-[#003d33] md:shadow-lg md:min-w-[200px] md:z-50`}>
+                                <li>
+                                    <Link href="/about/founder" className="block py-2 px-4 hover:bg-yellow-500 hover:text-black transition-colors text-xs md:text-[13px]">
+                                        Founder
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/about/president" className="block py-2 px-4 hover:bg-yellow-500 hover:text-black transition-colors text-xs md:text-[13px]">
+                                        President
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/about/secretary" className="block py-2 px-4 hover:bg-yellow-500 hover:text-black transition-colors text-xs md:text-[13px]">
+                                        Secretary
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/about/principal" className="block py-2 px-4 hover:bg-yellow-500 hover:text-black transition-colors text-xs md:text-[13px]">
+                                        Principal
+                                    </Link>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li className="relative group">
+                            <Link href="/academics" className="block py-3 px-3 md:px-4 hover:bg-yellow-500 hover:text-black transition-colors whitespace-nowrap">
+                                Academics
+                            </Link>
+                        </li>
+
+                        <li className="relative group">
+                            <Link href="/admission" className="block py-3 px-3 md:px-4 hover:bg-yellow-500 hover:text-black transition-colors whitespace-nowrap">
+                                Admission
+                            </Link>
+                        </li>
+
+                        {/* Department Dropdown */}
+                        <li
+                            className="relative group"
+                            onMouseEnter={() => setIsDepartmentDropdownOpen(true)}
+                            onMouseLeave={() => setIsDepartmentDropdownOpen(false)}
+                        >
+                            <button className="flex items-center gap-1 py-3 px-3 md:px-4 hover:bg-yellow-500 hover:text-black transition-colors whitespace-nowrap w-full md:w-auto text-left">
+                                Department
+                                <ChevronDown className="h-3 w-3" />
+                            </button>
+                            {/* Dropdown Menu */}
+                            <ul className={`${isDepartmentDropdownOpen ? 'block' : 'hidden'} md:absolute md:top-full md:left-0 md:bg-[#b30202] md:text-white md:shadow-lg md:min-w-[320px] md:z-50 divide-y divide-white/10`}>
+                                <li>
+                                    <Link href="/departments/ece" className="block py-3 px-4 hover:bg-yellow-500 hover:text-black transition-colors text-xs md:text-[13px]">
+                                        B.E. Electronics and Communication Engineering
+                                    </Link>
+                                </li>
+                                <li>
+                                    <a href="https://sites.google.com/view/cseatsbcec/" target="_blank" rel="noopener noreferrer" className="block py-3 px-4 hover:bg-yellow-500 hover:text-black transition-colors text-xs md:text-[13px]">
+                                        B.E. Computer Science Engineering
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.sbcecinfotech.com/" target="_blank" rel="noopener noreferrer" className="block py-3 px-4 hover:bg-yellow-500 hover:text-black transition-colors text-xs md:text-[13px]">
+                                        B.Tech. Information Technology
+                                    </a>
+                                </li>
+                                <li>
+                                    <Link href="/departments/csbs" className="block py-3 px-4 hover:bg-yellow-500 hover:text-black transition-colors text-xs md:text-[13px]">
+                                        B.Tech. Computer Science and Business Systems
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/departments/ai-ds" className="block py-3 px-4 hover:bg-yellow-500 hover:text-black transition-colors text-xs md:text-[13px]">
+                                        B.Tech. Artificial Intelligence and Data Science
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/departments/mba" className="block py-3 px-4 hover:bg-yellow-500 hover:text-black transition-colors text-xs md:text-[13px]">
+                                        MBA
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/departments/mca" className="block py-3 px-4 hover:bg-yellow-500 hover:text-black transition-colors text-xs md:text-[13px]">
+                                        MCA
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/departments/science-humanities" className="block py-3 px-4 hover:bg-yellow-500 hover:text-black transition-colors text-xs md:text-[13px]">
+                                        Science and Humanities
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/placements" className="block py-3 px-4 hover:bg-yellow-500 hover:text-black transition-colors text-xs md:text-[13px]">
+                                        Placement
+                                    </Link>
+                                </li>
+                            </ul>
+                        </li>
+
                         {[
-                            { name: 'Home', path: '/' },
-                            { name: 'About Us', path: '/about' },
-                            { name: 'Message', path: '/message' },
-                            { name: 'Academics', path: '/academics' },
-                            { name: 'Admission', path: '/admission' },
-                            { name: 'Department', path: '/departments' },
                             { name: 'Library', path: '/library' },
                             { name: 'Gallery', path: '/gallery' },
                             { name: 'IQAC', path: '/iqac' },

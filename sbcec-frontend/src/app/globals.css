@@ -20,10 +20,14 @@
     --chart-5: 340 75% 55%;
 
     /* College Brand Colors */
-    --college-blue: 216 100% 25%; /* #003380 approx - Deep Blue */
-    --college-red: 345 100% 30%; /* #990026 approx - Maroon */
-    --college-yellow: 45 100% 50%; /* #FFC700 approx - Gold/Yellow */
-    --college-green: 150 100% 25%; /* #008040 approx - Dark Green/Teal */
+    --college-blue: 216 100% 25%;
+    /* #003380 approx - Deep Blue */
+    --college-red: 345 100% 30%;
+    /* #990026 approx - Maroon */
+    --college-yellow: 45 100% 50%;
+    /* #FFC700 approx - Gold/Yellow */
+    --college-green: 150 100% 25%;
+    /* #008040 approx - Dark Green/Teal */
   }
 }
 
@@ -31,4 +35,24 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: inline-flex;
+  animation: marquee 40s linear infinite;
+  width: max-content;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
 }

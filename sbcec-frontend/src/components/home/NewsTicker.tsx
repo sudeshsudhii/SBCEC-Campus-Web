@@ -12,6 +12,25 @@ export function NewsTicker() {
             </div>
             <div className="flex-1 flex items-center overflow-hidden bg-slate-50 relative">
                 <div className="animate-marquee whitespace-nowrap flex items-center gap-12 px-4 text-xs md:text-sm font-medium text-slate-800">
+                    {/* Original Items */}
+                    <span className="flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
+                        Admissions open for 2026-2027 Academic Year. Apply Now!
+                    </span>
+                    <span className="flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-blue-600"></span>
+                        First Year Induction Program scheduled for August 25th.
+                    </span>
+                    <span className="flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-green-600"></span>
+                        Congratulations to Final Year students for 100% placement record.
+                    </span>
+                    <span className="flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-red-600"></span>
+                        Exam Schedule for April/May released. Check the Exam Cell for details.
+                    </span>
+
+                    {/* Copied Items for Seamless Loop */}
                     <span className="flex items-center gap-2">
                         <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
                         Admissions open for 2026-2027 Academic Year. Apply Now!
