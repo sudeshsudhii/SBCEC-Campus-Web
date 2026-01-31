@@ -43,13 +43,15 @@ export function PublicHeader() {
             <div className="container mx-auto py-2 px-4 flex flex-col md:flex-row items-center justify-between gap-4 bg-white">
                 <div className="flex items-center gap-6 w-full md:w-auto">
                     {/* Logo */}
-                    <div className="h-28 w-auto md:h-32 relative flex-shrink-0 flex items-center">
+                    {/* Logo */}
+                    <div className="h-20 md:h-28 relative flex-shrink-0 flex items-center">
                         <Image
                             src="/assets/live/logo_high_res.png"
                             alt="SBCEC Logo"
                             width={635}
                             height={100}
                             className="h-full w-auto object-contain"
+                            priority
                         />
                     </div>
                     <div className="flex flex-col text-center md:text-left justify-center">
