@@ -5,10 +5,10 @@ import { useEffect, useState } from "react";
 export function NewsTicker() {
     return (
         <div className="bg-white border-b flex h-10 md:h-12 overflow-hidden shadow-sm relative z-40">
-            <div className="bg-[#b30202] text-white px-4 md:px-8 font-bold flex items-center shrink-0 text-xs md:text-sm uppercase tracking-wider relative z-10 w-32 md:w-auto justify-center">
+            <div className="bg-yellow-500 text-black px-4 md:px-8 font-bold flex items-center shrink-0 text-xs md:text-sm uppercase tracking-wider relative z-10 w-32 md:w-auto justify-center">
                 Latest News
                 {/* Triangle arrow effect */}
-                <div className="absolute -right-3 top-0 bottom-0 w-0 h-0 border-t-[20px] md:border-t-[24px] border-t-transparent border-l-[12px] border-l-[#b30202] border-b-[20px] md:border-b-[24px] border-b-transparent"></div>
+                <div className="absolute -right-3 top-0 bottom-0 w-0 h-0 border-t-[20px] md:border-t-[24px] border-t-transparent border-l-[12px] border-l-yellow-500 border-b-[20px] md:border-b-[24px] border-b-transparent"></div>
             </div>
             <div className="flex-1 flex items-center overflow-hidden bg-[#a00000] relative">
                 <div className="animate-marquee whitespace-nowrap flex items-center gap-12 px-4 text-xs md:text-sm font-medium text-white">
