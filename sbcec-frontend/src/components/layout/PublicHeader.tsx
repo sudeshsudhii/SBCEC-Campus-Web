@@ -41,7 +41,7 @@ export function PublicHeader() {
 
             {/* Main Header - Logo & Title */}
             <div className="container mx-auto py-2 px-4 flex flex-col md:flex-row items-center justify-between gap-4 bg-white">
-                <div className="flex flex-col md:flex-row items-center gap-3 md:gap-6 w-full md:w-auto">
+                <Link href="/" className="flex flex-col md:flex-row items-center gap-3 md:gap-6 w-full md:w-auto hover:opacity-90 transition-opacity">
                     {/* Logo */}
                     <div className="h-16 md:h-28 relative flex-shrink-0 flex items-center">
                         <Image
@@ -64,7 +64,7 @@ export function PublicHeader() {
                             Irumbedu, Arni - 632 317, Thiruvannamalai Dist.
                         </p>
                     </div>
-                </div>
+                </Link>
 
                 {/* Excellence Badge */}
                 <div className="hidden md:block relative w-44 h-36 flex-shrink-0">

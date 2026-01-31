@@ -38,16 +38,19 @@ export function HeroCarousel() {
     return (
         <div className="relative h-[400px] md:h-[500px] w-full overflow-hidden bg-slate-200 group">
             {/* Persistent Video Background */}
-            <div className="absolute inset-0 z-0">
+            <div className="absolute inset-0 z-0" onContextMenu={(e) => e.preventDefault()}>
                 <video
                     className="w-full h-full object-cover"
                     autoPlay
                     loop
                     muted
                     playsInline
+                    controlsList="nodownload"
+                    disablePictureInPicture
+                    draggable={false}
                     poster="/assets/live/hero_main.jpg"
                 >
-                    <source src="/assets/live/hero_video.mp4" type="video/mp4" />
+                    <source src="/assets/live/hero_video_v2.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
                 {/* Dark Overlay for text readability */}
